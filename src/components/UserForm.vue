@@ -38,6 +38,7 @@
             @change="$event => emitChange({field: 'birthday', value: $event})"
           />
         </v-menu>
+
         <v-text-field
           v-mask="'#### ######'"
           label="Серия и номер паспорта"

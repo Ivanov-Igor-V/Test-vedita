@@ -84,8 +84,7 @@ export default {
 		}
 	},
 	watch: {
-		toggleUserAdding(oldVal, newVal) {
-			console.log(oldVal, newVal);
+		toggleUserAdding() {
 			this.addEmptyForm()
 		}
 	},

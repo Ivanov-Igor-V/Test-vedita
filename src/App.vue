@@ -43,7 +43,6 @@ export default {
       if (JSON.stringify(this.data) === JSON.stringify(e)) { this.isEditting = false; return }
       this.data =  JSON.parse(JSON.stringify(e))
       this.isEditting = false
-      console.log(this.data);
     }
 	},
 };

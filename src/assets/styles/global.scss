@@ -2,6 +2,10 @@
     .v-application p {
         margin-bottom: 8px;
     }
+
+    .v-text-field {
+        padding-top: 0 !important;
+    }
     .v-input {
         // Стили для инпута от vuetify
         margin-bottom: 10px;
@@ -14,9 +18,8 @@
         }
         .v-label {
             top: 11px;
-            left: 12px !important;
             max-width: 80%;
-            z-index: 20;
+            z-index: 2;
             background: white;
             padding: 0 2px 0 1px;
             font-weight: 400;
@@ -30,13 +33,15 @@
             font-size: 16px;
             line-height: 18px;
             color: rgba(0, 0, 0, 0.87);
-            outline: 1px solid rgba(0, 0, 0, 0.38) !important;
-            padding: 11px 12px;
-            border-radius: 4px;
+            padding: 11px 0;
             max-height: none;
         }
+
         .v-text-field__details {
             display: none;
         }
+        outline: 1px solid rgba(0, 0, 0, 0.38) !important;
+        border-radius: 4px;
+        padding: 0 12px;
     }
 }
