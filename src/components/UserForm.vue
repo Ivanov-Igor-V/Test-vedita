@@ -1,110 +1,82 @@
 <template>
-  <div class="user-form">
+  <div>
     <form>
-      <div class="input-container">
-        <v-text-field
-          label="ФИО"
-          required
-          :value="form.fio"
-          @input="
-            ($event) =>
-              emitChange({
-                field: 'fio',
-                value: $event,
-              })
-          "
-        />
-        <!-- <v-text-field
-          label="Дата рождения"
-          required
-          :value="form.birthday"
-          @input="$event => emitChange({field: 'birthday', value: $event})"
-        /> -->
-        <v-menu
-          ref="menu"
-          :close-on-content-click="true"
-          transition="scale-transition"
-          offset-y
-          min-width="auto"
-        >
-          <template #activator="{ on, attrs }">
+      <v-container>
+        <v-row>
+          <v-col cols="12" md="4">
             <v-text-field
-              :value="form.birthday"
-              label="Дата рождения"
-              prepend-icon="mdi-calendar"
-              readonly
-              v-bind="attrs"
-              v-on="on"
+              label="ФИО"
+              required
+              :value="form.fio"
+              @input="($event) => emitChange({ field: 'fio', value: $event })"
             />
-          </template>
-          <v-date-picker
-            :active-picker.sync="activePicker"
-            min="1950-01-01"
-            :value="form.birthday"
-            @change="
-              ($event) =>
-                emitChange({
-                  field: 'birthday',
-                  value: $event,
-                })
-            "
-          />
-        </v-menu>
-
-        <v-text-field
-          v-mask="'#### ######'"
-          label="Серия и номер паспорта"
-          required
-          :value="form.passport"
-          @input="
-            ($event) =>
-              emitChange({
-                field: 'passport',
-                value: $event,
-              })
-          "
-        />
-
-        <v-text-field
-          v-mask="'###-###-### ##'"
-          :value="form.snils"
-          label="СНИЛС"
-          required
-          @input="
-            ($event) =>
-              emitChange({
-                field: 'snils',
-                value: $event,
-              })
-          "
-        />
-        <v-text-field
-          v-mask="'+7 (###) ###-##-##'"
-          :value="form.phone"
-          label="Телефон"
-          required
-          @input="
-            ($event) =>
-              emitChange({
-                field: 'phone',
-                value: $event,
-              })
-          "
-        />
-        <v-text-field
-          v-mask="'############'"
-          :value="form.inn"
-          label="ИНН"
-          required
-          @input="
-            ($event) =>
-              emitChange({
-                field: 'inn',
-                value: $event,
-              })
-          "
-        />
-      </div>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-menu
+              ref="menu"
+              :close-on-content-click="true"
+              transition="scale-transition"
+              offset-y
+              min-width="auto"
+            >
+              <template #activator="{ on, attrs }">
+                <v-text-field
+                  :value="form.birthday"
+                  label="Дата рождения"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                />
+              </template>
+              <v-date-picker
+                :active-picker.sync="activePicker"
+                min="1950-01-01"
+                :value="form.birthday"
+                @change="($event) => emitChange({ field: 'birthday', value: $event })"
+              />
+            </v-menu>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-mask="'#### ######'"
+              label="Серия и номер паспорта"
+              required
+              :value="form.passport"
+              @input="($event) => emitChange({ field: 'passport', value: $event })"
+            />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-mask
+              :value="form.snils"
+              label="СНИЛС"
+              required
+              @input="($event) => emitChange({ field: 'snils', value: $event })"
+            />
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-mask="'+7 (###) ###-##-##'"
+              :value="form.phone"
+              label="Телефон"
+              required
+              @input="($event) => emitChange({ field: 'phone', value: $event })"
+            />
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-mask="'############'"
+              :value="form.inn"
+              label="ИНН"
+              required
+              @input="($event) => emitChange({ field: 'inn', value: $event })"
+            />
+          </v-col>
+        </v-row>
+      </v-container>
     </form>
   </div>
 </template>
@@ -132,19 +104,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.input-container {
-  display: grid;
-  column-gap: 25px;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (max-width: 568px) {
-  .input-container {
-    display: inline-flex;
-    flex-direction: column;
-    width: 100%;
-  }
-}
-</style>

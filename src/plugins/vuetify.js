@@ -4,7 +4,6 @@ import 'vuetify/dist/vuetify.min.css';
 import ru from 'vuetify/lib/locale/ru';
 import colors from 'vuetify/lib/util/colors';
 import '@mdi/font/css/materialdesignicons.css'; // Ensure you are using css-loader
-// import { createVuetify } from 'vuetify';
 
 Vue.use(Vuetify);
 

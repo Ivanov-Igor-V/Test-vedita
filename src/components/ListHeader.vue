@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header">
-      {{ title }}
-    </div>
+    <div class="header">{{ title }}</div>
     <div class="text--disabled header_empty">
       {{ description }}
     </div>
@@ -31,6 +29,8 @@ export default {
   line-height: 24px;
   font-size: 20px;
   margin-bottom: 16px;
+  white-space: pre-wrap;
+  margin-right: 2px;
 
   &_empty {
     line-height: 16px;
