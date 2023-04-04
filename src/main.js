@@ -7,6 +7,6 @@ Vue.directive('mask', VueMaskDirective);
 Vue.config.productionTip = false;
 
 new Vue({
-	vuetify,
-	render: (h) => h(App),
+  vuetify,
+  render: (h) => h(App),
 }).$mount('#app');

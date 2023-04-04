@@ -2,16 +2,21 @@
   <div id="app">
     <v-app
       :style="{
-        background: $vuetify.theme.themes.light.background,
+        background:
+          $vuetify.theme.themes.light.background,
       }"
->
+    >
       <v-layout>
         <v-container class="w-75">
           <v-sheet
-rounded
-outlined class="mt-8 pa-8">
-            <UserList :list="data"
-@saveNewForm="saveNewForm" />
+            rounded
+            outlined
+            class="mt-8 pa-8"
+          >
+            <UserList
+              :list="data"
+              @saveNewForm="saveNewForm"
+            />
           </v-sheet>
         </v-container>
       </v-layout>
@@ -23,27 +28,30 @@ outlined class="mt-8 pa-8">
 import UserList from '@/components/UserList.vue';
 import DATA from '@/data';
 export default {
-	name: 'App',
-	components: { UserList },
-	data() {
-		return {
-			data: DATA,
-			isEditting: false,
-		};
-	},
-	methods: {
-		swichStatus() {
-			this.isEditting = !this.isEditting;
-		},
-		saveNewForm(e) {
-			if (JSON.stringify(this.data) === JSON.stringify(e)) {
-				this.isEditting = false;
-				return;
-			}
-			this.data = JSON.parse(JSON.stringify(e));
-			this.isEditting = false;
-		},
-	},
+  name: 'App',
+  components: { UserList },
+  data() {
+    return {
+      data: DATA,
+      isEditting: false,
+    };
+  },
+  methods: {
+    swichStatus() {
+      this.isEditting = !this.isEditting;
+    },
+    saveNewForm(e) {
+      if (
+        JSON.stringify(this.data) ===
+        JSON.stringify(e)
+      ) {
+        this.isEditting = false;
+        return;
+      }
+      this.data = JSON.parse(JSON.stringify(e));
+      this.isEditting = false;
+    },
+  },
 };
 </script>
 
