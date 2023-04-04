@@ -1,13 +1,33 @@
 <template>
-  <div>
-    <div class="header">
-      {{ title }}
-    </div>
-    <div class="text--disabled header_empty">
-      {{ description }}
-    </div>
-  </div>
+	<div>
+		<div class="header">
+			{{ title }}
+		</div>
+		<div class="text--disabled header_empty">
+			{{ description }}
+		</div>
+	</div>
 </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 export default {
 	name: 'ListHeader',
@@ -20,10 +40,53 @@ export default {
 			type: String,
 			default: 'Не добавлено',
 		},
-		empty: Boolean
+		empty: Boolean,
 	},
 };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style lang="scss">
 .header {
 	line-height: 24px;
@@ -36,3 +99,46 @@ export default {
 	}
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

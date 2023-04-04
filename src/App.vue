@@ -4,18 +4,14 @@
       :style="{
         background: $vuetify.theme.themes.light.background,
       }"
-    >
+>
       <v-layout>
         <v-container class="w-75">
           <v-sheet
-            rounded
-            outlined
-            class="mt-8 pa-8"
-          >
-            <UserList
-              :list="data"
-              @saveNewForm="saveNewForm"
-            />
+rounded
+outlined class="mt-8 pa-8">
+            <UserList :list="data"
+@saveNewForm="saveNewForm" />
           </v-sheet>
         </v-container>
       </v-layout>
@@ -25,7 +21,7 @@
 
 <script>
 import UserList from '@/components/UserList.vue';
-import DATA from "@/data"
+import DATA from '@/data';
 export default {
 	name: 'App',
 	components: { UserList },
@@ -39,11 +35,14 @@ export default {
 		swichStatus() {
 			this.isEditting = !this.isEditting;
 		},
-    saveNewForm(e) {
-      if (JSON.stringify(this.data) === JSON.stringify(e)) { this.isEditting = false; return }
-      this.data =  JSON.parse(JSON.stringify(e))
-      this.isEditting = false
-    }
+		saveNewForm(e) {
+			if (JSON.stringify(this.data) === JSON.stringify(e)) {
+				this.isEditting = false;
+				return;
+			}
+			this.data = JSON.parse(JSON.stringify(e));
+			this.isEditting = false;
+		},
 	},
 };
 </script>
