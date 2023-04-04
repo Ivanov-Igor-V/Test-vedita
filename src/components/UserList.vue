@@ -1,30 +1,14 @@
 <template>
   <div class="d-flex flex-column">
-    <div
-      class="d-flex justify-space-between align-center"
-    >
+    <div class="d-flex justify-space-between align-center">
       <ListHeader
-        :title="
-          isEditting
-            ? 'Добавление пользователей'
-            : undefined
-        "
+        :title="isEditting ? 'Добавление пользователей' : undefined"
         :description="
-          isEditting
-            ? 'Заполните данные'
-            : `${
-                !list.length
-                  ? 'Не добавлены'
-                  : 'Добавлено'
-              }`
+          isEditting ? 'Заполните данные' : `${!list.length ? 'Не добавлены' : 'Добавлено'}`
         "
       />
       <div>
-        <div
-          v-if="
-            localList.length < 1 || isEditting
-          "
-        >
+        <div v-if="localList.length < 1 || isEditting">
           <v-btn
             v-if="$vuetify.breakpoint.smAndUp"
             class="bg-primary"
@@ -44,39 +28,24 @@
             x-small
             @click="mainButtonHandler"
           >
-            <v-icon v-if="!isEditting">
-              mdi-plus
-            </v-icon>
+            <v-icon v-if="!isEditting"> mdi-plus </v-icon>
             <v-icon v-else> mdi-check </v-icon>
           </v-btn>
         </div>
       </div>
     </div>
     <div class="mt-6">
-      <div
-        v-for="(user, index) in localList"
-        :key="user.id"
-        class="mb-7"
-      >
-        <div class="text-h6 primary--text mb-4">
-          Пользователь №{{ index + 1 }}
-        </div>
+      <div v-for="(user, index) in localList" :key="user.id" class="mb-7">
+        <div class="text-h6 primary--text mb-4">Пользователь №{{ index + 1 }}</div>
         <ListItem
           :form="user"
           :index="index"
           class="mb-4"
           :toggler="toggleUserAdding"
-          @makeUserEditting="
-            makeFieldEditting(index)
-          "
-          @formChanged="
-            changeField(index, $event)
-          "
+          @makeUserEditting="makeFieldEditting(index)"
+          @formChanged="changeField(index, $event)"
         />
-        <v-divider
-          v-if="index !== localList.length - 1"
-          class="mb-6"
-        />
+        <v-divider v-if="index !== localList.length - 1" class="mb-6" />
       </div>
     </div>
 
@@ -118,18 +87,10 @@ export default {
 
   computed: {
     mainButtonText() {
-      return this.isEditting
-        ? 'Сохранить'
-        : 'Добавить';
+      return this.isEditting ? 'Сохранить' : 'Добавить';
     },
     isButtonDisabled() {
-      if (
-        this.localList.some((element) =>
-          Object.values(element).some(
-            (el) => el === '',
-          ),
-        )
-      )
+      if (this.localList.some((element) => Object.values(element).some((el) => el === '')))
         return true;
       return false;
     },
@@ -141,9 +102,7 @@ export default {
   },
   mounted() {
     console.log(this.$vuetify.breakpoint);
-    this.localList = JSON.parse(
-      JSON.stringify(this.list),
-    );
+    this.localList = JSON.parse(JSON.stringify(this.list));
   },
   methods: {
     mainButtonHandler() {
@@ -154,9 +113,7 @@ export default {
       }
       this.toggleUserAdding = false;
       this.isEditting = false;
-      this.localList.forEach((el) =>
-        this.$set(el, 'isEditting', false),
-      );
+      this.localList.forEach((el) => this.$set(el, 'isEditting', false));
       this.$emit('saveNewForm', this.localList);
       this.hasChanges = false;
     },
@@ -176,19 +133,11 @@ export default {
     },
     makeFieldEditting(index) {
       this.isEditting = true;
-      this.$set(
-        this.localList[index],
-        'isEditting',
-        true,
-      );
+      this.$set(this.localList[index], 'isEditting', true);
     },
     changeField(index, e) {
       this.hasChanges = true;
-      this.$set(
-        this.localList[index],
-        e.field,
-        e.value,
-      );
+      this.$set(this.localList[index], e.field, e.value);
     },
   },
 };

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="!form.isEditting"
-      class="d-flex justify-space-between align-start"
-    >
+    <div v-if="!form.isEditting" class="d-flex justify-space-between align-start">
       <div>
         <div>
           ФИО: <strong>{{ form.fio }}</strong>
@@ -27,21 +24,11 @@
           <strong>{{ form.passport }}</strong>
         </div>
       </div>
-      <v-btn
-        small
-        depressed
-        width="36px"
-        height="36px"
-        @click="makeUserEditting"
-      >
+      <v-btn small depressed width="36px" height="36px" @click="makeUserEditting">
         <v-icon color="grey"> mdi-pencil </v-icon>
       </v-btn>
     </div>
-    <UserForm
-      v-else
-      :form="form"
-      @fieldChanged="changeField"
-    />
+    <UserForm v-else :form="form" @fieldChanged="changeField" />
   </div>
 </template>
 
