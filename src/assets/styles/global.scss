@@ -1,0 +1,42 @@
+:root {
+    .v-application p {
+        margin-bottom: 8px;
+    }
+    .v-input {
+        // Стили для инпута от vuetify
+        margin-bottom: 10px;
+        &__slot {
+            margin: 0;
+        }
+        &__slot::before,
+        &__slot::after {
+            display: none;
+        }
+        .v-label {
+            top: 11px;
+            left: 12px !important;
+            max-width: 80%;
+            z-index: 20;
+            background: white;
+            padding: 0 2px 0 1px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 18px;
+            height: initial;
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+        input {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 18px;
+            color: rgba(0, 0, 0, 0.87);
+            outline: 1px solid rgba(0, 0, 0, 0.38) !important;
+            padding: 11px 12px;
+            border-radius: 4px;
+            max-height: none;
+        }
+        .v-text-field__details {
+            display: none;
+        }
+    }
+}

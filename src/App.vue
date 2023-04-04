@@ -1,32 +1,54 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+    <v-app
+      :style="{
+        background: $vuetify.theme.themes.light.background,
+      }"
+    >
+      <v-layout>
+        <v-container class="w-75">
+          <v-sheet
+            rounded
+            outlined
+            class="mt-8 pa-8"
+          >
+            <UserList
+              :list="data"
+              @saveNewForm="saveNewForm"
+            />
+          </v-sheet>
+        </v-container>
+      </v-layout>
+    </v-app>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import UserList from '@/components/UserList.vue';
+import DATA from "@/data"
+export default {
+	name: 'App',
+	components: { UserList },
+	data() {
+		return {
+			data: DATA,
+			isEditting: false,
+		};
+	},
+	methods: {
+		swichStatus() {
+			this.isEditting = !this.isEditting;
+		},
+    saveNewForm(e) {
+      if (JSON.stringify(this.data) === JSON.stringify(e)) { this.isEditting = false; return }
+      this.data =  JSON.parse(JSON.stringify(e))
+      this.isEditting = false
+      console.log(this.data);
     }
-  }
-}
+	},
+};
+</script>
+
+<style lang="scss">
+@import '@/assets/styles/global.scss';
 </style>
