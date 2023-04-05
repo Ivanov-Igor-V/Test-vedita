@@ -1,31 +1,34 @@
 <template>
   <div>
     <div v-if="!form.isEditting" class="d-flex justify-space-between align-start">
-      <div>
-        <div>
-          ФИО: <strong>{{ form.fio }}</strong>
+      <div class="item-data">
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">ФИО: </span>
+          <span>{{ form.fio }}</span>
         </div>
-        <div>
-          СНИЛС: <strong>{{ form.snils }}</strong>
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">СНИЛС: </span>
+          <span>{{ form.snils }}</span>
         </div>
-        <div>
-          Номер телефона:
-          <strong>{{ form.phone }}</strong>
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">Номер телефона: </span>
+          <span>{{ form.phone }}</span>
         </div>
-        <div>
-          ИНН: <strong>{{ form.inn }}</strong>
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">ИНН:</span>
+          <span>{{ form.inn }}</span>
         </div>
-        <div>
-          Дата рождения:
-          <strong>{{ form.birthday }}</strong>
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">Дата рождения: </span>
+          <span>{{ form.birthday }}</span>
         </div>
-        <div>
-          Серия и номер паспорта:
-          <strong>{{ form.passport }}</strong>
+        <div class="d-flex flex-column flex-md-row">
+          <span class="mr-0 text--disabled mr-md-2 mb-1 mb-md-0">Серия и номер паспорта: </span>
+          <span>{{ form.passport }}</span>
         </div>
       </div>
-      <v-btn small depressed width="36px" height="36px" @click="makeUserEditting">
-        <v-icon color="grey"> mdi-pencil </v-icon>
+      <v-btn x-small depressed width="36px" height="36px" @click="makeUserEditting">
+        <v-icon class="item-edit-icon"> mdi-pencil </v-icon>
       </v-btn>
     </div>
     <UserForm v-else :form="form" @fieldChanged="changeField" />
@@ -52,3 +55,24 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+@import '@/assets/styles/variables.scss';
+
+.item-data {
+  div {
+    font-size: 16px;
+    line-height: 19px;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+.item-edit-icon {
+  color: $icon-gray !important;
+}
+</style>

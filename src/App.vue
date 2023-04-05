@@ -6,8 +6,8 @@
       }"
     >
       <v-layout>
-        <v-container class="w-75">
-          <v-sheet rounded outlined class="mt-8 pa-8 pa-xs-4">
+        <v-container fluid class="wrapper">
+          <v-sheet rounded outlined class="ma-4 ma-sm-8 pa-4 pa-sm-8">
             <UserList :list="data" @saveNewForm="saveNewForm" />
           </v-sheet>
         </v-container>
@@ -38,6 +38,7 @@ export default {
         return;
       }
       this.data = JSON.parse(JSON.stringify(e));
+      console.log(this.data);
       this.isEditting = false;
     },
   },
@@ -46,4 +47,11 @@ export default {
 
 <style lang="scss">
 @import '@/assets/styles/global.scss';
+@import '@/assets/styles/variables.scss';
+
+.wrapper {
+  max-width: 1200px !important;
+  margin: 0 auto;
+  padding: 0 !important;
+}
 </style>

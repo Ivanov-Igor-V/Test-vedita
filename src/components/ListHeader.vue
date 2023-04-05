@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="header">{{ title }}</div>
+    <div class="header mb-2 mb-sm-4">{{ title }}</div>
     <div class="text--disabled header_empty">
       {{ description }}
     </div>
@@ -28,7 +28,6 @@ export default {
 .header {
   line-height: 24px;
   font-size: 20px;
-  margin-bottom: 16px;
   white-space: pre-wrap;
   margin-right: 2px;
 

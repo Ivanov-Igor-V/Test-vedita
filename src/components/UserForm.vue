@@ -1,7 +1,7 @@
 <template>
   <div>
     <form>
-      <v-container>
+      <v-container fluid class="pa-0">
         <v-row>
           <v-col cols="12" md="4">
             <v-text-field
@@ -50,7 +50,7 @@
         <v-row>
           <v-col cols="12" md="4">
             <v-text-field
-              v-mask
+              v-mask="'###-###-### ##'"
               :value="form.snils"
               label="СНИЛС"
               required

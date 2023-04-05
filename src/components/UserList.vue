@@ -34,9 +34,9 @@
         </div>
       </div>
     </div>
-    <div class="mt-6">
+    <div class="mt-6" v-if="localList.length">
       <div v-for="(user, index) in localList" :key="user.id" class="mb-7">
-        <div class="text-h6 primary--text mb-4">Пользователь №{{ index + 1 }}</div>
+        <div class="list-header primary--text mb-4">Пользователь №{{ index + 1 }}</div>
         <ListItem
           :form="user"
           :index="index"
@@ -51,12 +51,13 @@
 
     <v-btn
       v-if="localList.length || isEditting"
-      class="align-self-center"
+      class="align-self-center px-3"
       outlined
       color="primary"
       :disabled="isButtonDisabled"
       @click="addEmptyForm"
     >
+      <v-icon class="mr-2"> mdi-plus </v-icon>
       Еще
     </v-btn>
   </div>
@@ -101,7 +102,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$vuetify.breakpoint);
     this.localList = JSON.parse(JSON.stringify(this.list));
   },
   methods: {
@@ -142,3 +142,12 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.list-header {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+}
+</style>
